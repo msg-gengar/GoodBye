@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Until We Talk Again…</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+
+    body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #fff0f5, #ffe4e1); /* Soft pinkish background */
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #e91e63;
+  font-size: 3em;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.letter {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
+  animation: slideIn 2s ease-in-out;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  color: #444;
+  text-align: left;
+}
+
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #e91e63;
+      font-size: 3em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      color: #444;
+      font-size: 1.2em;
+      line-height: 1.8em;
+      margin: 20px 0;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .letter {
+      background: #ffffffb0;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+      animation: slideIn 2s ease-in-out;
+    }
+
+    .countdown {
+      font-size: 2em;
+      color: #d81b60;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://i.imgur.com/H9Sb12I.png') no-repeat center/contain;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+    }
+
+    .music-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    .music-toggle:hover {
+      background: #ffe6f0;
+    }
+
+    .music-toggle img {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="heartsContainer"></div>
+
+  <button class="music-toggle" id="musicBtn" title="Play/Pause Music">
+    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Music Icon">
+  </button>
+
+  <audio id="bgMusic" loop autoplay>
+    <source src="Song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <h1>Until We Talk Again…</h1>
+    
+    <div class="letter">
+        <img src="image.1.jpeg" alt="Kanika" style="
+  width: 140px;
+  height: auto;
+  border-radius: 16px;
+  margin: 20px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: block;
+  transition: transform 0.3s ease;
+">
+
+">
+<p>Hey My Lovely Pengu,</p>
+
+<p>So I don’t know ki 15 din kaise katenge... but haan, aapke prayas se itna to hai ki main wahan reh loonga.</p>
+
+<p>Toh aap bhi ek smile ke saath ye waqt kaat lena.</p>
+
+<p>Jaisa ki mera ek part aappe hai, toh usse khush rakhna. Aur ek baat… shayad aap na jaanti ho, par woh part tabhi khush rehta hai jab *aap* khush hoti ho.</p>
+
+<p>So last mein... aapki yaad bahut aayegi. Isse aage... X</p>
+
+<p style="margin-top: 30px;">With a lot of missing,</p>
+<p>Yours, Oreo</p>
+    </div>
+
+    <div class="countdown" id="countdown">Loading countdown...</div>
+  </div>
+
+  <script>
+    // Countdown timer
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 15);
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `I'll be back in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "I'm back!";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    // Floating hearts
+    const heartContainer = document.getElementById('heartsContainer');
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 8 + 's';
+      heartContainer.appendChild(heart);
+    }
+
+    // Music control
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    let isPlaying = true;
+
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
+</body>
+</html>
